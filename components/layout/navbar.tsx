@@ -1,5 +1,6 @@
 import Link from "next/link"
-import { BellIcon, SearchIcon, WriteIcon } from "../common/icons"
+import { BellIcon, SearchIcon, WriteIcon } from "@/components/common/icons"
+import AuthButton from "../common/auth-button"
 
 export default function Navbar() {
     return (
@@ -32,9 +33,7 @@ function DesktopNavbar() {
                 <button type="button">
                     <BellIcon />
                 </button>
-                <button type="button" className="w-9 h-9 rounded-full bg-gray-100">
-                    D
-                </button>
+                <AuthButton/>
             </div>
 
 
@@ -55,9 +54,7 @@ function MobileNavbar() {
                     <BellIcon />
                 </button>
             </div>
-            <button type="button" className="w-9 h-9 rounded-full bg-gray-100">
-                D
-            </button>
+            <AuthButton/>
         </nav>
     )
 }

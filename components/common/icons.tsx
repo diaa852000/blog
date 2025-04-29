@@ -11,18 +11,17 @@ export const BellIcon = () => {
         >
             <path
                 stroke="currentColor"
-                stroke-linecap="round"
+                strokeLinecap="round"
                 d="M15 18.5a3 3 0 1 1-6 0"
             ></path>
             <path
                 stroke="currentColor"
-                stroke-linejoin="round"
+                strokeLinejoin="round"
                 d="M5.5 10.532V9a6.5 6.5 0 0 1 13 0v1.532c0 1.42.564 2.782 1.568 3.786l.032.032c.256.256.4.604.4.966v2.934a.25.25 0 0 1-.25.25H3.75a.25.25 0 0 1-.25-.25v-2.934c0-.363.144-.71.4-.966l.032-.032A5.35 5.35 0 0 0 5.5 10.532Z"
             ></path>
         </svg>
     )
 }
-
 
 export const WriteIcon = () => {
     return (
@@ -89,8 +88,26 @@ export const ProfileIcon = () => {
             ></circle>
             <path
                 stroke="currentColor"
-                stroke-linecap="round"
+                strokeLinecap="round"
                 d="M3.5 21.5v-4.342C3.5 15.414 7.306 14 12 14s8.5 1.414 8.5 3.158V21.5"
+            ></path>
+        </svg>
+    )
+}
+
+export const StatusIcon = () => {
+    return (
+        <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            fill="none"
+            viewBox="0 0 24 24"
+            aria-label="Stats"
+        >
+            <path
+            stroke="currentColor"
+            d="M2.75 19h4.5a.25.25 0 0 0 .25-.25v-6.5a.25.25 0 0 0-.25-.25h-4.5a.25.25 0 0 0-.25.25v6.5c0 .138.112.25.25.25ZM9.75 19h4.5a.25.25 0 0 0 .25-.25V8.25a.25.25 0 0 0-.25-.25h-4.5a.25.25 0 0 0-.25.25v10.5c0 .138.112.25.25.25ZM16.75 19h4.5a.25.25 0 0 0 .25-.25V4.25a.25.25 0 0 0-.25-.25h-4.5a.25.25 0 0 0-.25.25v14.5c0 .138.112.25.25.25Z"
             ></path>
         </svg>
     )
