@@ -1,6 +1,6 @@
 import Link from "next/link"
 import { BellIcon, SearchIcon, WriteIcon } from "@/components/common/icons"
-import AuthButton from "../common/auth-button"
+import AuthButton from "../common/auth/auth-button"
 
 export default function Navbar() {
     return (

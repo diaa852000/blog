@@ -121,3 +121,11 @@
     @apply bg-background text-foreground;
   }
 }
+
+.main-container {
+  @apply max-w-7xl mx-auto w-full p-4
+}
+
+.portal-root {
+  @apply fixed w-full h-dvh overflow-hidden bg-white/70 z-[9999] flex items-center justify-center;
+}

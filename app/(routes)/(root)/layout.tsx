@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import { Source_Serif_4 } from "next/font/google";
-import "./globals.css";
+import "@/app/globals.css";
 import { getServerSession } from "next-auth"
 import SessionProvider from "@/components/providers/SessionProvider";
+import Navbar from "@/components/layout/navbar";
 
 const sourceSerif = Source_Serif_4({
   subsets: ["latin"],
@@ -19,7 +20,9 @@ export default async function RootLayout({ children, }: Readonly<{ children: Rea
   return (
     <html lang="en">
       <body className={`${sourceSerif.variable} antialiased`}>
+        <div id="portal-root" />
         <SessionProvider session={session}>
+          <Navbar />
           {children}
         </SessionProvider>
       </body>
