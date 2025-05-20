@@ -31,7 +31,7 @@ export default function UserMenu() {
                     />
                 </Button>
             </PopoverTrigger>
-            <PopoverContent align="end" className="absolute right-0 space-y-3">
+            <PopoverContent align="end" className="space-y-3 bg-background" style={{ zIndex: 9999 }}>
                 {menuLinks.map((link) => (
                     <Link
                         key={link.id}

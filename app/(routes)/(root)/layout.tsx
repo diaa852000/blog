@@ -2,8 +2,9 @@ import type { Metadata } from "next";
 import { Source_Serif_4 } from "next/font/google";
 import "@/app/globals.css";
 import { getServerSession } from "next-auth"
-import SessionProvider from "@/components/providers/SessionProvider";
+import SessionProvider from "@/components/providers/session-provider";
 import Navbar from "@/components/layout/navbar";
+import { ThemeProvider } from "@/components/providers/theme-provider";
 
 const sourceSerif = Source_Serif_4({
   subsets: ["latin"],
@@ -18,13 +19,20 @@ export default async function RootLayout({ children, }: Readonly<{ children: Rea
   const session = await getServerSession();
 
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body className={`${sourceSerif.variable} antialiased`}>
-        <div id="portal-root" />
-        <SessionProvider session={session}>
-          <Navbar />
-          {children}
-        </SessionProvider>
+        <ThemeProvider
+          attribute={"class"}
+          defaultTheme="systme"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <div id="portal-root" />
+          <SessionProvider session={session}>
+            <Navbar />
+            {children}
+          </SessionProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

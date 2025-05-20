@@ -1,6 +1,6 @@
 import Link from "next/link"
 import { BellIcon, SearchIcon, WriteIcon } from "@/components/common/icons"
-import AuthButton from "../common/auth/auth-button"
+import AuthButton from "../auth/auth-button"
 
 export default function Navbar() {
     return (
@@ -16,7 +16,7 @@ function DesktopNavbar() {
         <nav className="hidden md:flex items-center justify-between px-5 py-3 border-b">
             <div className="flex items-center gap-2">
                 <Logo />
-                <div className="w-[250px] bg-gray-50 rounded-3xl py-2 flex items-center justify-between px-4 gap-4">
+                <div className="w-[250px] bg-gray-50 rounded-xl py-1 flex items-center justify-between px-4 gap-4 border border-gray-300">
                     <SearchIcon />
                     <input
                         type="text"
@@ -33,10 +33,8 @@ function DesktopNavbar() {
                 <button type="button">
                     <BellIcon />
                 </button>
-                <AuthButton/>
+                <AuthButton />
             </div>
-
-
         </nav>
     )
 }
@@ -53,8 +51,8 @@ function MobileNavbar() {
                 <button type="button">
                     <BellIcon />
                 </button>
+                <AuthButton />
             </div>
-            <AuthButton/>
         </nav>
     )
 }
