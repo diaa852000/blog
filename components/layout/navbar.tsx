@@ -41,7 +41,7 @@ function DesktopNavbar() {
 
 function MobileNavbar() {
     return (
-        <nav className="px-5 pb-2 pt-3 flex items-center justify-between border-b md:hidden">
+        <nav className="px-5 pb-2 pt-3 flex items-center justify-between border-b md:hidden gap-4">
             <Logo />
 
             <div className="flex items-center justify-between gap-6">

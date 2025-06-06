@@ -1,3 +1,4 @@
 - add Notfication system on comment or mention
 - add mention logic
 - simple chat logic
+- infinite scroll

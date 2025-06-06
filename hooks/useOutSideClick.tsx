@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 
-type Callback = (e?:MouseEvent, ...props: any[]) => void;
+type Callback = (e?: MouseEvent, ...props: any[]) => void;
 
 export default function useOutSideClick<T extends HTMLElement = HTMLElement>(
     callback: Callback
@@ -8,16 +8,17 @@ export default function useOutSideClick<T extends HTMLElement = HTMLElement>(
     const ref = useRef<T | null>(null);
 
     useEffect(() => {
-        function handleClick(e?: MouseEvent ) {
-            if (ref.current && !ref.current.contains(e?.target as Node)) {
+        function handleClick(e: MouseEvent) {
+            const target = e.target as Node;
+            if (ref.current && target && !ref.current.contains(target)) {
                 callback(e);
             }
         }
 
-        document.addEventListener("click", handleClick);
+        document.addEventListener("mousedown", handleClick);
 
         return () => {
-            document.removeEventListener("click", handleClick);
+            document.removeEventListener("mousedown", handleClick);
         }
     }, [callback]);
 

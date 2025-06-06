@@ -8,27 +8,21 @@ import { XIcon } from "lucide-react";
 import React, { FormEvent, useState } from "react";
 import { FaGithub } from "react-icons/fa";
 import { GoogleIcon } from "../common/icons";
-import { AuthServices } from "@/services/auth";
 import AuthProviders from "@/constants/auth-providers.enum";
 import Seperator from "./seperator";
+import { useAuthForm } from "@/hooks/useForm.hook";
+import AuthFormCredentials from "./auth-form-credentials";
 
 export default function AuthForm() {
-    const { loginWithProviders } = AuthServices;
-    const ref = useOutSideClick<HTMLFormElement>((e) => handleClose(e));
-
-    const [open, setOpen] = useState(false);
-    const [withCredentials, setWithCredentials] = useState(false);
-
-    const handleClose = (e?: MouseEvent | React.MouseEvent) => {
-        e?.stopPropagation();
-        setOpen(false);
-        setWithCredentials(false);
-    }
-
-    const handleLoginWithGithub = async (e: FormEvent, provider?: AuthProviders) => {
-        e.preventDefault();
-        await loginWithProviders(provider);
-    }
+    const ref = useOutSideClick<HTMLDivElement>((e) => handleClose(e));
+    const {
+        open,
+        withCredentials,
+        handleClose,
+        setOpen,
+        setWithCredentials,
+        handleLoginWithGithub
+    } = useAuthForm();
 
     return (
         <>
@@ -41,16 +35,16 @@ export default function AuthForm() {
             </Button>
 
             <Modal
+                ref={ref}
                 className={cn(
-                    open ? "opacity-100 pointer-events-auto scale-100" : "opacity-0 pointer-events-none scale-0",
-                    "transition-all ease-in-out duration-300"
+                    open
+                        ? "opacity-100 pointer-events-auto scale-100"
+                        : "opacity-0 pointer-events-none scale-0",
+                    "transition-all ease-in-out duration-150 bg-blue-200"
                 )}
             >
-                <form
-                    className="bg-background max-w-2xl w-full md:mx-auto shadow-[0_3px_8px_rgba(0,0,0,0.24)] rounded p-2 overflow-hidden h-[455px]"
-                    ref={ref}
-                >
-                    <div className={cn("transition-all ease-in-out duration-300" , withCredentials ? "translate-x-[-700px] hidden" : "translate-x-0")}>
+                <div className="bg-background w-[90vw] sm:w-[500px]  shadow-[0_3px_8px_rgba(0,0,0,0.24)] rounded p-2 overflow-hidden h-[455px] mx-auto">
+                    <div className={cn("transition-all ease-in-out duration-300", withCredentials ? "translate-x-[-700px] hidden" : "translate-x-0")}>
                         <header className="w-fit ms-auto">
                             <Button
                                 onClick={(e) => handleClose(e)}
@@ -94,17 +88,12 @@ export default function AuthForm() {
                             </Button>
                         </div>
                     </div>
-
                     {/* create seperated component */}
-                    <div className={cn("transition-all ease-in-out duration-300 bg-red-400 h-full", withCredentials ? "translate-x-0" : "translate-x-[700px]")}>
-                        <label htmlFor=""></label>
-                        <input
-                            type="email"
-                            className="form_auth-btn"
-                        />
-                    </div>
-                </form>
-
+                    <AuthFormCredentials
+                        open={withCredentials}
+                        setOpen={setWithCredentials}
+                    />
+                </div>
             </Modal>
 
         </>
